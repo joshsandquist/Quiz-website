@@ -1,3 +1,6 @@
+var startButton = document.getElementById('#start-button')
+
+
 // created an object "questions" to hold individual question objects with answers
 var questions = {
     question1: {
