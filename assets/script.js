@@ -1,4 +1,10 @@
-var startButton = document.getElementById('#start-button')
+var startButton = document.getElementById('start-button')
+var gameQuestion = document.getElementById('gameQuestion')
+var gameBoard = document.getElementById('gameBoard')
+var q1 = document.getElementById('q1')
+var q2 = document.getElementById('q2')
+var q3 = document.getElementById('q3')
+var q4 = document.getElementById('q4')
 
 
 // created an object "questions" to hold individual question objects with answers
@@ -113,3 +119,20 @@ var questionArr = [questions.question1, questions.question2, questions.question3
 //}
 
 console.log(questionArr)
+
+var gameRun = function() {
+    gameBoard.style.display = 'block'
+    gameQuestion.textContent = questions.question1.ask
+}
+
+
+
+
+
+
+
+
+startButton.addEventListener('click', function() {
+    gameRun()
+    console.log('hello')
+})

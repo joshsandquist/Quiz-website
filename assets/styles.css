@@ -4,8 +4,9 @@
     box-sizing: border-box;
 }
 
+
 body {
-    background-color: lightblue;
+    background-color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 header {
@@ -15,7 +16,9 @@ header {
 
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #start-button {
@@ -25,4 +28,21 @@ main {
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
+    width: 150px;
+    
+}
+
+#start-button:hover {
+    cursor: pointer;
+}
+#gameBoard {
+    display: none;
+    border: solid 1px purple;
+    margin: 30px;
+}
+
+li {
+    list-style-type: none;
+    padding: 10px;
+    border: solid 1px red;
 }
