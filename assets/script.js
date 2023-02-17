@@ -5,7 +5,7 @@ var q1 = document.getElementById('q1')
 var q2 = document.getElementById('q2')
 var q3 = document.getElementById('q3')
 var q4 = document.getElementById('q4')
-var score = 0
+var gameScore = document.getElementById('score')
 
 
 // created an object "questions" to hold individual question objects with answers
@@ -118,6 +118,7 @@ var currentIndex = 0
 //function to display game questions and answers
 var gameRun = function() {
     gameBoard.style.display = 'block'
+    startButton.style.display = 'none'
     var currentQuestion = questionArr[currentIndex];
     gameQuestion.textContent = currentQuestion.ask
     q1.textContent = currentQuestion.answer1
