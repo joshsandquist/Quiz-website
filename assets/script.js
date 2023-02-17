@@ -113,17 +113,21 @@ var questions = {
 // put question objects into an array
 var questionArr = [questions.question1, questions.question2, questions.question3, questions.question4, questions.question5, questions.question6, questions.question7, questions.question8, questions.question9, questions.question10]
 
+var currentIndex = 0
+
 // for loop to iterate through the questions array
    for(var i = 0; i< questionArr.length; i++ )
 
 //function to display game questions and answers
 var gameRun = function() {
     gameBoard.style.display = 'block'
-    gameQuestion.textContent = questions.question1.ask
-    q1.textContent = questions.question1.answer1
-    q2.textContent = questions.question1.answer2
-    q3.textContent = questions.question1.answer3
-    q4.textContent = questions.question1.answer4
+    var currentQuestion = questionArr[currentIndex];
+    gameQuestion.textContent = currentQuestion.ask
+    q1.textContent = currentQuestion.answer1
+    q2.textContent = currentQuestion.answer2
+    q3.textContent = currentQuestion.answer3
+    q4.textContent = currentQuestion.answer4
+
 }
 
 
