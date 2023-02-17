@@ -115,9 +115,6 @@ var questionArr = [questions.question1, questions.question2, questions.question3
 
 var currentIndex = 0
 
-// for loop to iterate through the questions array
-   for(var i = 0; i< questionArr.length; i++ )
-
 //function to display game questions and answers
 var gameRun = function() {
     gameBoard.style.display = 'block'
@@ -128,6 +125,16 @@ var gameRun = function() {
     q3.textContent = currentQuestion.answer3
     q4.textContent = currentQuestion.answer4
 
+}
+// Function to move on to the next question
+var nextQuestion = function() {
+    currentIndex++
+    if (currentIndex < questionArr.length) {
+        gameRun()
+    } else {
+        // Need to connect this to my scoreboard
+        "Game Over! your score is ____"
+    }
 }
 
 
