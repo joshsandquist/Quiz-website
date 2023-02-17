@@ -5,6 +5,7 @@ var q1 = document.getElementById('q1')
 var q2 = document.getElementById('q2')
 var q3 = document.getElementById('q3')
 var q4 = document.getElementById('q4')
+var score = 0
 
 
 // created an object "questions" to hold individual question objects with answers
@@ -14,7 +15,7 @@ var questions = {
         answer1: ".unshift",
         answer2: ".push",
         answer3: ".pop",
-        answer4: "shift",
+        answer4: ".shift",
         correct: function() {
             return this.answer2}
     },
@@ -112,17 +113,17 @@ var questions = {
 // put question objects into an array
 var questionArr = [questions.question1, questions.question2, questions.question3, questions.question4, questions.question5, questions.question6, questions.question7, questions.question8, questions.question9, questions.question10]
 
-// commented this out for now, not sure if it will be needed
-//var randomQuestion = function() {
-//    for(var i = 0; i< questionArr.length; i++ )
+// for loop to iterate through the questions array
+   for(var i = 0; i< questionArr.length; i++ )
 
-//}
-
-console.log(questionArr)
-
+//function to display game questions and answers
 var gameRun = function() {
     gameBoard.style.display = 'block'
     gameQuestion.textContent = questions.question1.ask
+    q1.textContent = questions.question1.answer1
+    q2.textContent = questions.question1.answer2
+    q3.textContent = questions.question1.answer3
+    q4.textContent = questions.question1.answer4
 }
 
 
@@ -131,8 +132,7 @@ var gameRun = function() {
 
 
 
-
+// Function used to start the game
 startButton.addEventListener('click', function() {
     gameRun()
-    console.log('hello')
 })
