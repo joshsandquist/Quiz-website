@@ -6,20 +6,21 @@ var q2 = document.getElementById('q2')
 var q3 = document.getElementById('q3')
 var q4 = document.getElementById('q4')
 var gameScore = document.getElementById('score')
-
+var timeLeftEl = document.getElementById('timeLeft')
+var setTimer;
+var time = 60;
+var scoreEl = document.getElementById('score')
+var score = 0
 
 // created an object "questions" to hold individual question objects with answers
-var questions = {
-    question1: {
+var questions = [{
         ask: "What JavaScript method can be used on an array to add an item to the last index?",
         answer1: ".unshift",
         answer2: ".push",
         answer3: ".pop",
         answer4: ".shift",
-        correct: function() {
-            return this.answer2}
-    },
-    question2: {
+        correct: ".push"
+    },{
         ask: "Which of the following is a truthy value?",
         answer1: "''",
         answer2: "null",
@@ -28,8 +29,7 @@ var questions = {
         correct: function() {
             return this.answer3
         }
-    },
-    question3: {
+    },{
         ask: "Where should the <script> tag be placed within an HTML document?",
         answer1: "After the openining <body> tag.",
         answer2: "Before the closing <body/> tag.",
@@ -38,8 +38,7 @@ var questions = {
         correct: function() {
             return this.answer2
         }   
-    },
-    question4: {
+    },{
         ask: "Which JavaScript data type can return either true of false?",
         answer1: "boolean",
         answer2: "string",
@@ -48,8 +47,7 @@ var questions = {
         correct: function() {
             return this.answer1
         },
-    },
-    question5: {
+    },{
         ask: "What JavaScript method can be used on an array to add an item to the zero index?",
         answer1: ".unshift",
         answer2: ".push",
@@ -58,8 +56,7 @@ var questions = {
         correct: function() {
             return this.answer1
         }
-    },
-    question6: {
+    },{
         ask: "In web development, what does DOM stand for?",
         answer1: "Direct Over Mouse",
         answer2: "Divide On Middle",
@@ -68,8 +65,7 @@ var questions = {
         correct: function() {
             return this.answer4
         }
-    },
-    question7: {
+    },{
         ask: "Which of the following is the correct syntax for an if statement?",
         answer1: "if i < 0 then",
         answer2: "if (i < 0) then",
@@ -78,8 +74,7 @@ var questions = {
         correct: function() {
             return this.answer4
         }
-    },
-    question8: {
+    },{
         ask: "Which of the following is the proper syntax for an array?",
         answer1: "var pets = cat, dog, fish",
         answer2: "var pets = 'cat', 'dog', 'fish'",
@@ -88,8 +83,7 @@ var questions = {
         correct: function() {
             return this.answer3
         }
-    },
-    question9: {
+    },{
         ask: "How do we display messages to the console in JavaScript?",
         answer1: "display()",
         answer2: "console.log()",
@@ -98,8 +92,7 @@ var questions = {
         correct: function() {
             return this.answer2
         }
-    },
-    question10: {
+    },{
         ask: "What JavaScript method is used to add data to local storage?",
         answer1: "localStorage.getItem()",
         answer2: "localStorage.setItem()",
@@ -109,42 +102,98 @@ var questions = {
             return this.answer2
         }
     },
-}
+]
 // put question objects into an array
-var questionArr = [questions.question1, questions.question2, questions.question3, questions.question4, questions.question5, questions.question6, questions.question7, questions.question8, questions.question9, questions.question10]
-
 var currentIndex = 0
 
 //function to display game questions and answers
 var gameRun = function() {
     gameBoard.style.display = 'block'
     startButton.style.display = 'none'
-    var currentQuestion = questionArr[currentIndex];
+    var currentQuestion = questions[currentIndex];
     gameQuestion.textContent = currentQuestion.ask
     q1.textContent = currentQuestion.answer1
     q2.textContent = currentQuestion.answer2
     q3.textContent = currentQuestion.answer3
     q4.textContent = currentQuestion.answer4
-
 }
 // Function to move on to the next question
 var nextQuestion = function() {
     currentIndex++
-    if (currentIndex < questionArr.length) {
+    if (currentIndex < questions.length) {
         gameRun()
     } else {
         // Need to connect this to my scoreboard
         "Game Over! your score is ____"
+        clearInterval(setTimer)
     }
 }
 
+var timer = function() {
+    setTimer = setInterval(function(){
+        time--
+        timeLeftEl.textContent = time
+        if(time <= 0) {
+            clearInterval(setTimer)
+        }
+    }, 1000)
+}
+// Would be better as dynamic buttons 
+
+q1.addEventListener('click', function() {
+    var text = q1.textContent
+    if (text === questions[currentIndex].correct) {
+        score++
+        nextQuestion()
+    } else {
+        time -= 5;
+        nextQuestion()
+    }
+})
+
+q2.addEventListener('click', function() {
+    var text = q2.textContent
+    if (text === questions[currentIndex].correct) {
+        score++
+        nextQuestion()
+    } else {
+        time -= 5;
+        nextQuestion()
+    }
+})
+
+q3.addEventListener('click', function() {
+    var text = q3.textContent
+    if (text === questions[currentIndex].correct) {
+        score++
+        nextQuestion()
+    } else {
+        time -= 5;
+        nextQuestion()
+    }
+})
+
+q4.addEventListener('click', function() {
+    var text = q4.textContent
+    if (text === questions[currentIndex].correct) {
+        score++
+        nextQuestion()
+    } else {
+        time -= 5;
+        nextQuestion()
+    }
+})
 
 
+var start = function() {
+    gameRun();
+    timer();
+}
 
 
 
 
 // Function used to start the game
 startButton.addEventListener('click', function() {
-    gameRun()
+    start()
 })
