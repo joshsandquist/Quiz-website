@@ -1,16 +1,19 @@
 var startButton = document.getElementById('start-button')
 var gameQuestion = document.getElementById('gameQuestion')
 var gameBoard = document.getElementById('gameBoard')
+var scoreBoardEl = document.getElementById('scoreBoard')
 var q1 = document.getElementById('q1')
 var q2 = document.getElementById('q2')
 var q3 = document.getElementById('q3')
 var q4 = document.getElementById('q4')
-var gameScore = document.getElementById('score')
 var timeLeftEl = document.getElementById('timeLeft')
 var setTimer;
 var time = 60;
 var scoreEl = document.getElementById('score')
+var gameScoreEl = document.getElementById('gameScore')
+var gameOverEl = document.getElementById('gameOver')
 var score = 0
+ gameOverEl.style.display = 'none'
 
 // created an object "questions" to hold individual question objects with answers
 var questions = [{
@@ -110,6 +113,9 @@ var nextQuestion = function() {
         "Game Over! your score is ____"
         clearInterval(setTimer)
         gameBoard.style.display = 'none'
+        scoreBoardEl.style.display = 'none'
+        gameOverEl.style.display = 'block'
+        gameScoreEl.textContent = score
     }
 }
 // Function that sets a timer that decrements one second.
