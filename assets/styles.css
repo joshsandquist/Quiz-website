@@ -21,6 +21,10 @@ main {
     align-items: center;
 }
 
+h2 {
+    text-align: center;
+    padding: 10px;
+}
 #start-button {
     background-color: red;
     color: white;

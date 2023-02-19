@@ -22,88 +22,71 @@ var questions = [{
         correct: ".push"
     },{
         ask: "Which of the following is a truthy value?",
-        answer1: "''",
+        answer1: '""',
         answer2: "null",
         answer3: "'false'",
         answer4: "false",
-        correct: function() {
-            return this.answer3
-        }
+        correct: "'false'"
     },{
         ask: "Where should the <script> tag be placed within an HTML document?",
         answer1: "After the openining <body> tag.",
         answer2: "Before the closing <body/> tag.",
         answer3: "After the closing <body/ tag.",
         answer4: "Within the <header> tag.",
-        correct: function() {
-            return this.answer2
-        }   
+        correct: "Before the closing <body/> tag."
     },{
         ask: "Which JavaScript data type can return either true of false?",
         answer1: "boolean",
         answer2: "string",
         answer3: "undefined",
         answer4: "number",
-        correct: function() {
-            return this.answer1
-        },
+        correct: "boolean"
+        ,
     },{
         ask: "What JavaScript method can be used on an array to add an item to the zero index?",
         answer1: ".unshift",
         answer2: ".push",
         answer3: ".pop",
         answer4: ".shift",
-        correct: function() {
-            return this.answer1
-        }
+        correct: ".unshift"
     },{
         ask: "In web development, what does DOM stand for?",
         answer1: "Direct Over Mouse",
         answer2: "Divide On Middle",
         answer3: "Developer Open Map",
         answer4: "Document Object Model",
-        correct: function() {
-            return this.answer4
-        }
+        correct: "Document Object Model"
     },{
         ask: "Which of the following is the correct syntax for an if statement?",
         answer1: "if i < 0 then",
         answer2: "if (i < 0) then",
         answer3: "if i < 0 {}",
-        answer4: "if (i < 0) {)",
-        correct: function() {
-            return this.answer4
-        }
+        answer4: "if (i < 0) {}",
+        correct: "if (i < 0) {}"
     },{
         ask: "Which of the following is the proper syntax for an array?",
         answer1: "var pets = cat, dog, fish",
         answer2: "var pets = 'cat', 'dog', 'fish'",
         answer3: "var pets = ['cat', 'dog', 'fish']",
         answer4: "var pets = {'cat', 'dog', 'fish'}",
-        correct: function() {
-            return this.answer3
-        }
+        correct: "var pets = ['cat', 'dog', 'fish']"
     },{
         ask: "How do we display messages to the console in JavaScript?",
         answer1: "display()",
         answer2: "console.log()",
         answer3: "print()",
         answer4: "view()",
-        correct: function() {
-            return this.answer2
-        }
+        correct: "console.log()"
     },{
         ask: "What JavaScript method is used to add data to local storage?",
         answer1: "localStorage.getItem()",
         answer2: "localStorage.setItem()",
         answer3: "localStorage.pullItem()",
         answer4: "localStorage.pushItem()",
-        correct: function() {
-            return this.answer2
-        }
+        correct: "localStorage.setItem()"
     },
 ]
-// put question objects into an array
+// sets index of questions array to 0
 var currentIndex = 0
 
 //function to display game questions and answers
@@ -126,9 +109,10 @@ var nextQuestion = function() {
         // Need to connect this to my scoreboard
         "Game Over! your score is ____"
         clearInterval(setTimer)
+        gameBoard.style.display = 'none'
     }
 }
-
+// Function that sets a timer that decrements one second.
 var timer = function() {
     setTimer = setInterval(function(){
         time--
@@ -138,12 +122,13 @@ var timer = function() {
         }
     }, 1000)
 }
-// Would be better as dynamic buttons 
+// Checks the button text for the correct answer and decrements time for wrong answer. Could have been done as dynamic buttons as well.
 
 q1.addEventListener('click', function() {
     var text = q1.textContent
     if (text === questions[currentIndex].correct) {
         score++
+        scoreEl.textContent = score
         nextQuestion()
     } else {
         time -= 5;
@@ -155,6 +140,7 @@ q2.addEventListener('click', function() {
     var text = q2.textContent
     if (text === questions[currentIndex].correct) {
         score++
+        scoreEl.textContent = score
         nextQuestion()
     } else {
         time -= 5;
@@ -166,6 +152,7 @@ q3.addEventListener('click', function() {
     var text = q3.textContent
     if (text === questions[currentIndex].correct) {
         score++
+        scoreEl.textContent = score
         nextQuestion()
     } else {
         time -= 5;
@@ -177,6 +164,7 @@ q4.addEventListener('click', function() {
     var text = q4.textContent
     if (text === questions[currentIndex].correct) {
         score++
+        scoreEl.textContent = score
         nextQuestion()
     } else {
         time -= 5;
@@ -184,7 +172,7 @@ q4.addEventListener('click', function() {
     }
 })
 
-
+// Created a separate function that only calls timer() once, rather than within the gameRun() function.
 var start = function() {
     gameRun();
     timer();
