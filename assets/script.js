@@ -1,21 +1,23 @@
-var startButton = document.getElementById('start-button')
-var gameQuestion = document.getElementById('gameQuestion')
-var gameBoard = document.getElementById('gameBoard')
-var scoreBoardEl = document.getElementById('scoreBoard')
-var q1 = document.getElementById('q1')
-var q2 = document.getElementById('q2')
-var q3 = document.getElementById('q3')
-var q4 = document.getElementById('q4')
-var timeLeftEl = document.getElementById('timeLeft')
+// All of my HTML selectors for changing questions/answers and game states
+var startButton = document.getElementById('start-button');
+var gameQuestion = document.getElementById('gameQuestion');
+var gameBoard = document.getElementById('gameBoard');
+var scoreBoardEl = document.getElementById('scoreBoard');
+var q1 = document.getElementById('q1');
+var q2 = document.getElementById('q2');
+var q3 = document.getElementById('q3');
+var q4 = document.getElementById('q4');
+var timeLeftEl = document.getElementById('timeLeft');
 var setTimer;
 var time = 60;
-var scoreEl = document.getElementById('score')
-var gameScoreEl = document.getElementById('gameScore')
-var gameOverEl = document.getElementById('gameOver')
-var score = 0
- gameOverEl.style.display = 'none'
+var scoreEl = document.getElementById('score');
+var gameScoreEl = document.getElementById('gameScore');
+var gameOverEl = document.getElementById('gameOver');
+var score = 0;
+ gameOverEl.style.display = 'none';
 
 // created an object "questions" to hold individual question objects with answers
+// The "correct" value is an exact match to right answer for use in scoring
 var questions = [{
         ask: "What JavaScript method can be used on an array to add an item to the last index?",
         answer1: ".unshift",
@@ -33,10 +35,10 @@ var questions = [{
     },{
         ask: "Where should the <script> tag be placed within an HTML document?",
         answer1: "After the openining <body> tag.",
-        answer2: "Before the closing <body/> tag.",
-        answer3: "After the closing <body/ tag.",
+        answer2: "Before the closing </body> tag.",
+        answer3: "After the closing </body> tag.",
         answer4: "Within the <header> tag.",
-        correct: "Before the closing <body/> tag."
+        correct: "Before the closing </body> tag."
     },{
         ask: "Which JavaScript data type can return either true of false?",
         answer1: "boolean",
@@ -93,6 +95,7 @@ var questions = [{
 var currentIndex = 0
 
 //function to display game questions and answers
+//creates variable currentQuestion to iterate through the questions array
 var gameRun = function() {
     gameBoard.style.display = 'block'
     startButton.style.display = 'none'
@@ -103,7 +106,8 @@ var gameRun = function() {
     q3.textContent = currentQuestion.answer3
     q4.textContent = currentQuestion.answer4
 }
-// Function to move on to the next question
+// Function to move on to the next question in the array
+// Will end the game once all questions are answered
 var nextQuestion = function() {
     currentIndex++
     if (currentIndex < questions.length) {
