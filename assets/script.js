@@ -17,6 +17,7 @@ var score = 0;
 var submitButtonEl = document.getElementById('submitButton')
 
  gameOverEl.style.display = 'none';
+ scoreBoardEl.style.display = 'none';
 
 // created an object "questions" to hold individual question objects with answers
 // The "correct" value is an exact match to right answer for use in scoring
@@ -115,8 +116,6 @@ var nextQuestion = function() {
     if (currentIndex < questions.length) {
         gameRun()
     } else {
-        // Need to connect this to my scoreboard
-        "Game Over! your score is ____"
         clearInterval(setTimer)
         gameBoard.style.display = 'none'
         scoreBoardEl.style.display = 'none'
@@ -131,7 +130,10 @@ var timer = function() {
         timeLeftEl.textContent = time
         if(time <= 0) {
             clearInterval(setTimer)
-            nextQuestion()
+            gameBoard.style.display = 'none';
+            scoreBoardEl.style.display = 'none';
+            gameOverEl.style.display = 'block';
+            gameScoreEl.textContent = score;
         }
     }, 1000)
 }
@@ -217,6 +219,7 @@ var initials = document.getElementById('initials').value;
 var start = function() {
     gameRun();
     timer();
+    scoreBoardEl.style.display = 'block'
 }
 
 
