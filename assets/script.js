@@ -184,21 +184,22 @@ q4.addEventListener('click', function() {
         nextQuestion()
     }
 })
-
-//Function used to add a users score to local storage
-var addScore = function(initials, score){
-
+// Used to retireve scores saves to local storage must be parsed back into an object for retrieval
+var highScores = JSON.parse(localStorage.getItem('highScores')) || []
 
 
-
-}
-
-// Adds an event listener to the initials form that retrieves the value for later use
+// Adds an event listener to the initials form that retrieves the user's score and initials
+// Scores and initials are saved as an object, so the must be converted to a JSON string to store
 submitButtonEl.addEventListener('click', function(event) {
 event.preventDefault()
-var initialslValue = document.getElementById('initials')
-var initials = initialslValue.value;
-addScore(initials, score)
+var initials = document.getElementById('initials').value;
+ var scoreObject = {
+    initials: initials,
+    score: score
+ }
+ highScores.push(scoreObject)
+ localStorage.setItem('highScores', JSON.stringify(highScores))
+ showHighScores();
 })
 
 
