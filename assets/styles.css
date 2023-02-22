@@ -51,7 +51,7 @@ h3 {
     }
 
 #gameQuestion {
-    height: 50px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,10 +79,6 @@ li {
     list-style-type: none;
     padding: 10px;
     border: solid blueviolet;
-}
-
-li:hover {
-    background-color: aqua;
 }
 
 form {

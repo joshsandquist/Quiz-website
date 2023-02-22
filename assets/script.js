@@ -209,7 +209,7 @@ var initials = document.getElementById('initials').value;
     scoreList.textContent = '';
     highScores.forEach(function(scoreObject) {
         var listItem = document.createElement('li');
-        listItem.textContent = scoreObject.initials + ': ' + scoreObject.score
+        listItem.textContent = scoreObject.initials.toUpperCase() + ': ' + scoreObject.score
         scoreList.appendChild(listItem)
  });
 }
