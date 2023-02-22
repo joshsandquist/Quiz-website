@@ -14,6 +14,8 @@ var scoreEl = document.getElementById('score');
 var gameScoreEl = document.getElementById('gameScore');
 var gameOverEl = document.getElementById('gameOver');
 var score = 0;
+var submitButtonEl = document.getElementById('submitButton')
+
  gameOverEl.style.display = 'none';
 
 // created an object "questions" to hold individual question objects with answers
@@ -190,6 +192,16 @@ var addScore = function(initials, score){
 
 
 }
+
+// Adds an event listener to the initials form that retrieves the value for later use
+submitButtonEl.addEventListener('click', function(event) {
+event.preventDefault()
+var initialslValue = document.getElementById('initials')
+var initials = initialslValue.value;
+addScore(initials, score)
+})
+
+
 
 // Created a separate function that only calls timer() once, rather than within the gameRun() function.
 var start = function() {
