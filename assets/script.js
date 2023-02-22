@@ -201,6 +201,7 @@ var initials = document.getElementById('initials').value;
     highScores.push(scoreObject)
     localStorage.setItem('highScores', JSON.stringify(highScores))
     showHighScores();
+    submitButtonEl.style.display = 'none'
  })
 
 // This function will append the users submitted initials and score to the highscores div as a list item
