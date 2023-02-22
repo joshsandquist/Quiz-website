@@ -195,13 +195,22 @@ event.preventDefault()
 var initials = document.getElementById('initials').value;
  var scoreObject = {
     initials: initials,
-    score: score
- }
- highScores.push(scoreObject)
- localStorage.setItem('highScores', JSON.stringify(highScores))
- showHighScores();
-})
+    score: score}
+    highScores.push(scoreObject)
+    localStorage.setItem('highScores', JSON.stringify(highScores))
+    showHighScores();
+ })
 
+// This function will append the users submitted initials and score to the highscores div as a list item
+ var showHighScores = function() {
+    var scoreList = document.getElementById('highScores').querySelector('ul')
+    scoreList.textContent = '';
+    highScores.forEach(function(scoreObject) {
+        var listItem = document.createElement('li');
+        listItem.textContent = scoreObject.initials + ': ' + scoreObject.score
+        scoreList.appendChild(listItem)
+ });
+}
 
 
 // Created a separate function that only calls timer() once, rather than within the gameRun() function.
@@ -211,7 +220,7 @@ var start = function() {
 }
 
 
-
+showHighScores()
 
 // Function used to start the game
 startButton.addEventListener('click', function() {

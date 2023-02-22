@@ -66,10 +66,15 @@ h3 {
     margin: 30px;
 }
 
+ul {
+    width: 200px;
+    border: solid black;
+}
+
 li {
+    text-align: center;
     list-style-type: none;
     padding: 10px;
-    border: solid 1px red;
 }
 
 li:hover {
