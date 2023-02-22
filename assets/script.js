@@ -129,6 +129,7 @@ var timer = function() {
         timeLeftEl.textContent = time
         if(time <= 0) {
             clearInterval(setTimer)
+            nextQuestion()
         }
     }, 1000)
 }
@@ -181,6 +182,14 @@ q4.addEventListener('click', function() {
         nextQuestion()
     }
 })
+
+//Function used to add a users score to local storage
+var addScore = function(initials, score){
+
+
+
+
+}
 
 // Created a separate function that only calls timer() once, rather than within the gameRun() function.
 var start = function() {
