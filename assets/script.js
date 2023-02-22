@@ -37,7 +37,7 @@ var questions = [{
         correct: "'false'"
     },{
         ask: "Where should the <script> tag be placed within an HTML document?",
-        answer1: "After the openining <body> tag.",
+        answer1: "After the opening <body> tag.",
         answer2: "Before the closing </body> tag.",
         answer3: "After the closing </body> tag.",
         answer4: "Within the <header> tag.",
@@ -201,7 +201,7 @@ var initials = document.getElementById('initials').value;
     highScores.push(scoreObject)
     localStorage.setItem('highScores', JSON.stringify(highScores))
     showHighScores();
-    submitButtonEl.style.display = 'none'
+    document.querySelector('form').style.display = 'none'
  })
 
 // This function will append the users submitted initials and score to the highscores div as a list item
