@@ -12,7 +12,7 @@ This project took many attempts to get all parts working, and I would like to fi
 
 ## Web link
 
-https://joshsandquist.github.io/module-4-challenge/
+https://joshsandquist.github.io/Quiz-website/
 
 
 ## Screenshots
