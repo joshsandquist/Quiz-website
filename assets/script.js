@@ -38,10 +38,10 @@ var questions = [{
     },{
         ask: "Where should the <script> tag be placed within an HTML document?",
         answer1: "After the opening <body> tag.",
-        answer2: "Before the closing </body> tag.",
+        answer2: "Within the <head> element",
         answer3: "After the closing </body> tag.",
-        answer4: "Within the <header> tag.",
-        correct: "Before the closing </body> tag."
+        answer4: "In the CSS file",
+        correct: "After the closing </body> tag."
     },{
         ask: "Which JavaScript data type can return either true of false?",
         answer1: "boolean",
